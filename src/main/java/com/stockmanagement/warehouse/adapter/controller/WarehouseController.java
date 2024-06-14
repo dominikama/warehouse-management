@@ -1,7 +1,7 @@
 package com.stockmanagement.warehouse.adapter.controller;
 
-import com.stockmanagement.warehouse.application.service.WarehouseService;
 import com.stockmanagement.warehouse.application.dto.WarehouseDto;
+import com.stockmanagement.warehouse.application.service.WarehouseService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,8 +28,8 @@ public class WarehouseController {
     }
 
     @GetMapping("/{warehouseId}")
-    public WarehouseDto getById(@PathVariable int warehouseId) {
-        return warehouseService.get(warehouseId);
+    public ResponseEntity<WarehouseDto> getById(@PathVariable int warehouseId) {
+        return ResponseEntity.ok().body(warehouseService.get(warehouseId));
     }
 
     @DeleteMapping("/{warehouseId}")
